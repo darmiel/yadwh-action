@@ -19,18 +19,23 @@ try {
     const target = `${url}/${encodeURI(name)}`;
     console.log("requesting", target, "...");
 
-    (async () => {
-        const response = await fetch(target, {
-            method: 'GET',
-            headers: {
-                'X-YADWH-Secret': secret
-            }
-        });
-
-        // get response body
-        const body = await response.text();
-        console.log("response:", body);
-    })();
-} catch (error) {
+    // send request to target using XHR
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', target, true);
+    xhr.setRequestHeader('X-YADWH-Secret', secret);
+    xhr.onload = function () {
+        core.setOutput('response', xhr.responseText);
+        if (xhr.status !== 200) {
+            console.log("error:", xhr.statusText);
+            core.setFailed(xhr.statusText);
+        }
+    };
+    xhr.onerror = function () {
+        console.log("error:", xhr.statusText);
+        core.setFailed(xhr.statusText);
+    };
+    xhr.send();
+}
+catch (error) {
     core.setFailed(error.message);
 }
