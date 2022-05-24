@@ -29,9 +29,7 @@ try {
 
         // get response body
         const body = await response.text();
-
-        // output response body
-        core.setOutput('response', body);
+        console.log("response:", body);
     })();
 } catch (error) {
     core.setFailed(error.message);
