@@ -22,6 +22,6 @@ Action to send a [yadwh](https://github.com/darmiel/yadwh) webhook.
 uses: darmiel/yadwh-action@v1
 with:
   url: 'https://yadwh.example.com'
-  name: 'BACKEND_PROD'
-  secret: ${{ secrets.BACKEND_PROD_SECRET }}
+  name: 'BACKEND_STAGING'
+  secret: ${{ secrets.STAGED_DEPLOY_SECRET }}
 ```
