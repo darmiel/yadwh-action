@@ -1,0 +1,18 @@
+name: 'yadwh'
+description: 'execute a yadwh webhook'
+inputs:
+  name:
+    description: 'Name of the yadwh target group'
+    required: true
+  url:
+    description: 'yadwh url (without name and secret)'
+    required: true
+  secret:
+    description: 'secret of the yadwh target group'
+    required: true
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'node16'
+  main: 'index.js'
