@@ -1,7 +1,9 @@
 name: 'yadwh'
 description: 'execute a yadwh webhook'
-icon: 'anchor'
-color: 'blue'
+
+branding:
+  icon: 'anchor'
+  color: 'blue'
 
 inputs:
   name:
